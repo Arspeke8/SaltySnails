@@ -93,26 +93,31 @@
           </span>
         </button>
       </header>
-      <div class="card-content">
-        <div class="content">
-          Keep track of a list of things you can do to make a positive impact on our environment! We started the list for you.
-          <div class="checklist">
-            <label class="checkbox">
-              <input type="checkbox">
-              Take shorter showers!
-            </label>
-            <label class="checkbox">
-              <input type="checkbox">
-              Don't litter!
-            </label>
+      <!-- Checklist -->
+      <div class="checklist-card">
+        <div class="card-content">
+          <div class="content">
+            Keep track of a list of things you can do to make a positive impact on our environment! We started the list for you.
+            <div class="checklist">
+              <label class="checkbox">
+                <input type="checkbox">
+                Take shorter showers!
+              </label>
+              <label class="checkbox">
+                <input type="checkbox">
+                Don't litter!
+              </label>
+            </div>
           </div>
         </div>
+        <footer class="card-footer">
+          <input class="input" id="add-checklist-item" type="text" placeholder="Add checklist item">
+          <button class="button is-light" id="checklist-submit">Submit</button>
+        </footer>
       </div>
-      <footer class="card-footer">
-        <input class="input" type="text" placeholder="Add checklist item">
-        <button class="button is-light">Submit</button>
-      </footer>
     </div>
+
+    <script src="./Assets/script.js"></script>
   </body>
 
   <footer id="Contact" class="footer">
