@@ -4,6 +4,18 @@ var checklistEl = document.querySelector(".checklist");
 
 var checklistArray = [];
 
+function init() {
+    // Get stored checklist from local storage
+    var storedChecklist = JSON.parse(localStorage.getItem("checklist"));
+
+    // Updates checklist array if there was a stored checklist from local storage
+    if (storedChecklist !== null) {
+        checklistArray = storedChecklist;
+    }
+
+    renderChecklist();
+}
+
 // Renders checklist items as <li> elements
 function renderChecklist() {
     checklistEl.innerHTML = "";
@@ -13,8 +25,8 @@ function renderChecklist() {
 
         var checklistItem = document.createElement("label");
         checklistItem.classList.add("checkbox");
-        checklistItem.innerHTML = "<input type='checkbox'>" + checklistItemText;
-        
+        checklistItem.innerHTML = "<input type='checkbox' id='individualCheckbox' data-index='" + i + "'>" + checklistItemText;
+        checklistEl.appendChild(checklistItem);
     }
 }
 
@@ -41,3 +53,23 @@ checklistSubmitBtn.addEventListener("click", function(event) {
     storeChecklist();
     renderChecklist();
 });
+
+// Retrieves any data from local storage and loads (if there are any)
+init();
+
+checklistEl.addEventListener("click", function(event) {
+    var element = event.target;
+  
+    // Checks if element is a checkbox
+    if (element.matches("#individualCheckbox") === true) {
+      // Get its data-index value and remove the checklist element from the list
+      var index = element.getAttribute("data-index");
+      console.log(index);
+      checklistArray.splice(index, 1);
+      console.log(checklistArray);
+  
+      // Store updated checklist array in localStorage, re-render the list
+      storeChecklist();
+      renderChecklist();
+    }
+  });
