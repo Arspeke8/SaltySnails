@@ -45,6 +45,7 @@
           <a class="navbar-item"> Link 1 </a>
 
           <a class="navbar-item"> Link 2 </a>
+          <a class="navbar-item js-modal-trigger" data-target="checklist-modal">Checklist</a>
         </div>
       </div>
     </nav>
@@ -140,32 +141,39 @@
       </p>
     </section>
 
-    <div class="card">
-      <header class="card-header">
-        <p class="card-header-title">
-          Checklist
-        </p>
-        <button class="card-header-icon" aria-label="more options">
-          <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </header>
-      <!-- Checklist -->
-      <div class="checklist-card">
-        <div class="card-content">
-          <div class="content">
-            Keep track of a list of things you can do to make a positive impact on our environment!
-            <div class="checklist"></div>
+    <!-- Modal for checklist -->
+    <div class="modal" id="checklist-modal">
+      <div class="modal-background"></div>
+      <div class="modal-content">
+        <!-- Checklist -->
+        <div class="card">
+          <header class="card-header">
+            <p class="card-header-title">
+              Checklist
+            </p>
+            <button class="card-header-icon" aria-label="more options">
+              <span class="icon">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </header>
+          <div class="checklist-card">
+            <div class="card-content">
+              <div class="content">
+                Keep track of a list of things you can do to make a positive impact on our environment!
+                <div class="checklist"></div>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <input class="input" id="add-checklist-item" type="text" placeholder="Add checklist item">
+              <button class="button is-light" id="checklist-submit">Submit</button>
+            </footer>
           </div>
         </div>
-        <footer class="card-footer">
-          <input class="input" id="add-checklist-item" type="text" placeholder="Add checklist item">
-          <button class="button is-light" id="checklist-submit">Submit</button>
-        </footer>
       </div>
+      <button class="modal-close is-large" aria-label="close"></button>
     </div>
-
+    
     <script src="./Assets/script.js"></script>
   </body>
 
