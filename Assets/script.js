@@ -165,23 +165,23 @@ function renderAirQuality(airQuality) {
     airQualityTableCellEl.appendChild(aqi);
 
     var humidity = document.createElement("tr");
-    humidity.innerHTML = "<th>Humidity</th><td>"+airQuality.iaqi.h.v+"</td>"
+    humidity.innerHTML = "<th>Humidity</th><td>"+(airQuality.iaqi.h?.v ?? "N/A")+"</td>"
     airQualityTableCellEl.appendChild(humidity);
 
     var oz = document.createElement("tr");
-    oz.innerHTML = "<th>Ozone</th><td>"+airQuality.iaqi.o3.v+"</td>"
+    oz.innerHTML = "<th>Ozone</th><td>"+(airQuality.iaqi.o3?.v ?? "N/A")+"</td>"
     airQualityTableCellEl.appendChild(oz);
 
     var pressure = document.createElement("tr");
-    pressure.innerHTML = "<th>Atmospheric Pressure</th><td>"+airQuality.iaqi.p.v+"</td>"
+    pressure.innerHTML = "<th>Atmospheric Pressure</th><td>"+(airQuality.iaqi.p?.v ?? "N/A")+"</td>"
     airQualityTableCellEl.appendChild(pressure);
 
     var pm25 = document.createElement("tr");
-    pm25.innerHTML = "<th>PM2.5</th><td>"+airQuality.iaqi.pm25.v+"</td>"
+    pm25.innerHTML = "<th>PM2.5</th><td>"+(airQuality.iaqi.pm25?.v ?? "N/A")+"</td>"
     airQualityTableCellEl.appendChild(pm25);
 
     var co = document.createElement("tr");
-    co.innerHTML = "<th>Carbon Monoxide</th><td>"+airQuality.iaqi.co.v+"</td>"
+    co.innerHTML = "<th>Carbon Monoxide</th><td>"+(airQuality.iaqi.co?.v ?? "N/A")+"</td>"
     airQualityTableCellEl.appendChild(co);
 }
 
