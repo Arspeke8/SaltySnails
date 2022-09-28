@@ -6,7 +6,7 @@ var cityNameSearchEl = document.querySelector("#city-name-search");
 var airQualitySearchEl = document.querySelector("#air-quality-search-box");
 var airQualitySearchTableCellEl = document.querySelector("#air-quality-search-items");
 var stationNameEl = document.querySelector(".station-name");
-var airQualityTableCellEl = document.querySelector("#air-quality-items")
+var airQualityTableCellEl = document.querySelector("#air-quality-items");
 
 var checklistArray = [];
 
@@ -149,7 +149,8 @@ function retrieveAirQuality(topResultUrl) {
 function renderSearchResults(searchResults) {
     for(var i = 0; i < searchResults.length; i++) {
         var airQualitySearchCellEl = document.createElement("tr");
-        airQualitySearchCellEl.innerHTML = "<td>"+searchResults[i].station.name+"</td><td>"+searchResults[i].time.stime+"</td>";
+        airQualitySearchCellEl.className = "search-result-cell";
+        airQualitySearchCellEl.innerHTML = "<td id='search-result-station-name' data-name='"+searchResults[i].station.name+"'>"+searchResults[i].station.name+"</td><td>"+searchResults[i].time.stime+"</td>";
         airQualitySearchTableCellEl.appendChild(airQualitySearchCellEl);
     }
 }
@@ -162,10 +163,6 @@ function renderAirQuality(airQuality) {
     var aqi = document.createElement("tr");
     aqi.innerHTML = "<th>Air Quality Index</th><td>"+airQuality.aqi+"</td>"
     airQualityTableCellEl.appendChild(aqi);
-
-    var co = document.createElement("tr");
-    co.innerHTML = "<th>Carbon Monoxide</th><td>"+airQuality.iaqi.co.v+"</td>"
-    airQualityTableCellEl.appendChild(co);
 
     var humidity = document.createElement("tr");
     humidity.innerHTML = "<th>Humidity</th><td>"+airQuality.iaqi.h.v+"</td>"
@@ -182,8 +179,26 @@ function renderAirQuality(airQuality) {
     var pm25 = document.createElement("tr");
     pm25.innerHTML = "<th>PM2.5</th><td>"+airQuality.iaqi.pm25.v+"</td>"
     airQualityTableCellEl.appendChild(pm25);
+
+    var co = document.createElement("tr");
+    co.innerHTML = "<th>Carbon Monoxide</th><td>"+airQuality.iaqi.co.v+"</td>"
+    airQualityTableCellEl.appendChild(co);
 }
 
+// When user clicks on station name from search results, it pulls up the air quality results
+airQualitySearchTableCellEl.addEventListener("click", function(event) {
+    var element = event.target;
+
+    console.log(element);
+
+    // Checks if element is a station name from search history
+    if(element.matches("#search-result-station-name")) {
+        // Gets station name
+        var name = element.getAttribute("data-name");
+
+        retrieveStations(name);
+    }
+});
 
 //non profit API 
 
