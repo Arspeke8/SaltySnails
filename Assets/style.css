@@ -27,11 +27,20 @@ li {
   border: 5px solid #864417;
 }
 
-ul {
+div.checklist {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
 }
 
 div.checklist:hover {
   background: #ddd;
+}
+div.checklist:nth-child(odd) {
+  background: #f9f9f9;
 }
 
 div.checklist.checked {
