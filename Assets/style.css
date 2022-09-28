@@ -52,3 +52,7 @@ div.checklist.checked::before {
   height: 15px;
   width: 7px;
 }
+
+.box {
+  margin: 10px;
+}

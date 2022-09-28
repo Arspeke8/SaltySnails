@@ -71,10 +71,26 @@
         environment such as Salty The Snail! However Salty and many out there
         just like him need your help!
       </p>
+      <!-- non profit organization API -->
+    <section>
+    <header class = "card-header">
+    </header>
+    <div>
     </section>
     <section class="section is-medium">
-      <h1 class="title">How can you Help Salty and do your part?</h1>
+      <h1> Click to view Charity Organizations near you!</h1>
+      <button class = "btn" id = "get-button">Click Here</button>
+    </div>
+    <div id = "organizations"></div>
+  </section>
+      
 
+    </div>
+
+    <div id = "organizations"></div>
+  </section>
+    <section class="section is-large">
+      <h1 class="title">How else can you Help Salty and do your part?</h1>
       <p>
         <strong>
           Taking on the task of helping the environment can seem a bit
@@ -139,7 +155,41 @@
         our checklist below where you can log all your pro environment goals!
       </p>
     </section>
-
+    <!-- Air Quality API Section -->
+    <section class="section is-medium">
+      <h1 class="title">Air Quality Dashboard</h1>
+      <div class="columns">
+        <!-- Search box -->
+        <form class="box column is-one-quarter" id="air-quality-search-box">
+          <div class="field">
+            <label class="label"><h4 class="title is-4">Search by City</h4></label>
+            <div class="control">
+              <input class="input" id="city-name-search" type="text" placeholder="Enter city name here">
+            </div>
+          </div>
+        </form>
+        <!-- Box to show air quality API outputs -->
+        <div class="box column" id="air-quality-search-result"><h4 class="title is-4">Search Results</h4>
+          <table class="table">
+            <thead>
+              <th>Station Name</th>
+              <th>Date Updated</th>
+            </thead>
+            <tbody id="air-quality-search-items"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="columns">
+        <!-- Box to show air quality search results -->
+        <div class="box column" id="air-quality-output"><h4 class="title is-4">Air Pollutants</h4>
+          <p class="subtitle is-5 station-name"></p>
+          <table class="table">
+            <tbody id="air-quality-items"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <!-- Checklist -->
     <div class="card">
       <header class="card-header">
         <p class="card-header-title">
@@ -151,7 +201,6 @@
           </span>
         </button>
       </header>
-      <!-- Checklist -->
       <div class="checklist-card">
         <div class="card-content">
           <div class="content">
