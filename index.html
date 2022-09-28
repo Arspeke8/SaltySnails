@@ -194,31 +194,36 @@
       </div>
     </section>
     <!-- Checklist -->
-    <div class="card">
-      <header class="card-header">
-        <p class="card-header-title">
-          Checklist
-        </p>
-        <button class="card-header-icon" aria-label="more options">
-          <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </header>
-      <div class="checklist-card">
-        <div class="card-content">
-          <div class="content">
-            Keep track of a list of things you can do to make a positive impact on our environment!
-            <div class="checked"></div>
-            <div class="checklist"></div>
+    <section class="section is-medium">
+      <h1 class="title">Checklist</h1>
+      <div class="columns">
+        <div class="card column">
+          <header class="card-header">
+            <p class="card-header-title">
+              Keep track of a list of things you can do to make a positive impact on our environment!
+            </p>
+            <button class="card-header-icon" aria-label="more options">
+              <span class="icon">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </header>
+          <div class="checklist-card">
+            <div class="card-content">
+              <div class="content">
+                <div class="checked"></div>
+                <div class="checklist"></div>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <input class="input" id="add-checklist-item" type="text" placeholder="Add checklist item">
+              <button class="button is-success" id="checklist-submit">Submit</button>
+              <button class="button is-danger is-outlined" id="checklist-clear">Clear Checked Items</button>
+            </footer>
           </div>
         </div>
-        <footer class="card-footer">
-          <input class="input" id="add-checklist-item" type="text" placeholder="Add checklist item">
-          <button class="button is-light" id="checklist-submit">Submit</button>
-        </footer>
       </div>
-    </div>
+    </section>
 
     <script src="./Assets/script.js"></script>
   </body>

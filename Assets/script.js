@@ -7,6 +7,7 @@ var airQualitySearchEl = document.querySelector("#air-quality-search-box");
 var airQualitySearchTableCellEl = document.querySelector("#air-quality-search-items");
 var stationNameEl = document.querySelector(".station-name");
 var airQualityTableCellEl = document.querySelector("#air-quality-items");
+var checklistClearEl = document.querySelector("#checklist-clear");
 
 var checklistArray = [];
 
@@ -31,7 +32,7 @@ function renderChecklist() {
 
         var checklistItem = document.createElement("label");
         checklistItem.classList.add("checkbox");
-        checklistItem.innerHTML = "<input type='checkbox' id='individualCheckbox' data-index='" + i + "'>" + checklistItemText;
+        checklistItem.innerHTML = "<input type='checkbox' id='individualCheckbox' data-index='" + i + "'><p>" + checklistItemText + "</p>";
         checklistEl.appendChild(checklistItem);
     }
 }
@@ -63,22 +64,18 @@ checklistSubmitBtn.addEventListener("click", function(event) {
 // Retrieves any data from local storage and loads (if there are any)
 init();
 
-checklistEl.addEventListener("click", function(event) {
-    var element = event.target;
-  
-    // Checks if element is a checkbox
-    if (element.matches("#individualCheckbox") === true) {
-      // Get its data-index value and remove the checklist element from the list
-      var index = element.getAttribute("data-index");
-      console.log(index);
-      checklistArray.splice(index, 1);
-      console.log(checklistArray);
-  
-      // Store updated checklist array in localStorage, re-render the list
-      storeChecklist();
-      renderChecklist();
+checklistClearEl.addEventListener("click", function() {
+    var checked = document.querySelectorAll("input[type='checkbox']:checked")
+
+    for (i = 0; i < checked.length; i++) {
+        var checkedIndex = checked[i].dataset.index;
+        checklistArray.splice(checkedIndex-i,1);
+        console.log(checklistArray);
     }
-  });
+
+    storeChecklist();
+    renderChecklist();
+});
 
 // Air Quality API
 // When user searches for city name for air quality
@@ -165,7 +162,7 @@ function renderAirQuality(airQuality) {
     stationNameEl.textContent = "Station Name: " + airQuality.name + " on " + airQuality.date.s;
 
     var aqi = document.createElement("tr");
-    aqi.innerHTML = "<th>Air Quality Index</th><td>"+airQuality.aqi+"</td>";
+    aqi.innerHTML = "<th>Air Quality Index</th><td>"+(airQuality?.aqi ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(aqi);
 
     var humidity = document.createElement("tr");
