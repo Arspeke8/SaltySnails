@@ -73,3 +73,36 @@ checklistEl.addEventListener("click", function(event) {
       renderChecklist();
     }
   });
+
+
+//non profit API 
+
+    var getbutton = document.getElementById('get-button');
+    var organizationsContainer = document.getElementById('organizations');
+
+    function getApi() {
+        var requestUrl = 'https://api.data.charitynavigator.org/v2/organizations?app_id=503ffc66&app_key=d75996a1f4f75a04e4644d92b1467e8f&search=environment&per_page=5';
+
+    fetch(requestUrl)
+        .then(function (response) {
+              return response.json();
+      })
+        .then(function (data) {
+          for (var i = 0; i < data.length; i++) {
+               var organizationName = document.createElement('h3');
+               var organizationState = document.createElement('p');
+               var organizationCity = document.createElement('p');
+
+               organizationName.textContent = data[i].charityName;
+               organizationState.textContent = data[i].stateOrProvince;
+               organizationCity.textContent = data[i].city;
+
+
+               organizationsContainer.append(organizationName);
+               organizationsContainer.append(organizationState);
+               organizationsContainer.append(organizationCity);
+
+            }
+      })
+    }
+    getbutton.addEventListener('click', getApi);
