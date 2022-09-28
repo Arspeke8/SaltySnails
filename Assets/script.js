@@ -191,7 +191,7 @@ function renderAirQuality(airQuality) {
     var organizationsContainer = document.getElementById('organizations');
 
     function getApi() {
-        var requestUrl = 'https://api.data.charitynavigator.org/v2/organizations?app_id=503ffc66&app_key=d75996a1f4f75a04e4644d92b1467e8f&search=environment&per_page=5';
+        var requestUrl = 'https://api.data.charitynavigator.org/v2/organizations?app_id=503ffc66&app_key=d75996a1f4f75a04e4644d92b1467e8f&search=environment&pageSize=15';
 
     fetch(requestUrl)
         .then(function (response) {
@@ -199,13 +199,13 @@ function renderAirQuality(airQuality) {
       })
         .then(function (data) {
           for (var i = 0; i < data.length; i++) {
-               var organizationName = document.createElement('h3');
+               var organizationName = document.createElement('h2');
                var organizationState = document.createElement('p');
                var organizationCity = document.createElement('p');
 
                organizationName.textContent = data[i].charityName;
-               organizationState.textContent = data[i].stateOrProvince;
-               organizationCity.textContent = data[i].city;
+               organizationState.textContent = data[i].mailingAddress.stateOrProvince;
+               organizationCity.textContent = data[i]. mailingAddress.city;
 
 
                organizationsContainer.append(organizationName);
