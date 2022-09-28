@@ -61,7 +61,8 @@ div.checklist.checked::before {
   transform: rotate(45deg);
   height: 15px;
   width: 7px;
-=======
+
+}
 
 .charity {
   color: blue;
