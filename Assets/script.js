@@ -5,6 +5,8 @@ var airQualityAPIToken = "7b5c7d5703572e06ba542ad579df8cd721c962cd";
 var cityNameSearchEl = document.querySelector("#city-name-search");
 var airQualitySearchEl = document.querySelector("#air-quality-search-box");
 var airQualitySearchTableCellEl = document.querySelector("#air-quality-search-items");
+var stationNameEl = document.querySelector(".station-name");
+var airQualityTableCellEl = document.querySelector("#air-quality-items")
 
 var checklistArray = [];
 
@@ -78,6 +80,7 @@ checklistEl.addEventListener("click", function(event) {
     }
   });
 
+// Air Quality API
 // When user searches for city name for air quality
 airQualitySearchEl.addEventListener("submit", function(event) {
     event.preventDefault();
@@ -111,8 +114,9 @@ function retrieveStations(cityName) {
             // Saves url of top result to variable
             var topResultUrl = data.data[0].station.url;
 
-            // Empties search results list
+            // Empties search results list and air quality results list
             airQualitySearchTableCellEl.innerHTML = "";
+            airQualityTableCellEl.innerHTML = "";
 
             renderSearchResults(searchResults);
             retrieveAirQuality(topResultUrl);
@@ -152,6 +156,32 @@ function renderSearchResults(searchResults) {
 
 function renderAirQuality(airQuality) {
     console.log(airQuality);
+
+    stationNameEl.textContent = "Station Name: " + airQuality.name + " on " + airQuality.date.s;
+
+    var aqi = document.createElement("tr");
+    aqi.innerHTML = "<th>Air Quality Index</th><td>"+airQuality.aqi+"</td>"
+    airQualityTableCellEl.appendChild(aqi);
+
+    var co = document.createElement("tr");
+    co.innerHTML = "<th>Carbon Monoxide</th><td>"+airQuality.iaqi.co.v+"</td>"
+    airQualityTableCellEl.appendChild(co);
+
+    var humidity = document.createElement("tr");
+    humidity.innerHTML = "<th>Humidity</th><td>"+airQuality.iaqi.h.v+"</td>"
+    airQualityTableCellEl.appendChild(humidity);
+
+    var oz = document.createElement("tr");
+    oz.innerHTML = "<th>Ozone</th><td>"+airQuality.iaqi.o3.v+"</td>"
+    airQualityTableCellEl.appendChild(oz);
+
+    var pressure = document.createElement("tr");
+    pressure.innerHTML = "<th>Atmospheric Pressure</th><td>"+airQuality.iaqi.p.v+"</td>"
+    airQualityTableCellEl.appendChild(pressure);
+
+    var pm25 = document.createElement("tr");
+    pm25.innerHTML = "<th>PM2.5</th><td>"+airQuality.iaqi.pm25.v+"</td>"
+    airQualityTableCellEl.appendChild(pm25);
 }
 
 

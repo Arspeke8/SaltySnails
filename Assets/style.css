@@ -15,14 +15,6 @@ nav img {
     size: 300%;
 }
 
-#air-quality-search-box {
-  width: 25%;
-  display: inline-block;
-}
-
-#air-quality-search-result {
-  width: 70%;
-  display: inline-block;
-  margin-left: 50px;
-  /* visibility: hidden; */
+.box {
+  margin: 10px;
 }
