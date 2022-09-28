@@ -161,28 +161,40 @@ function renderAirQuality(airQuality) {
     stationNameEl.textContent = "Station Name: " + airQuality.name + " on " + airQuality.date.s;
 
     var aqi = document.createElement("tr");
-    aqi.innerHTML = "<th>Air Quality Index</th><td>"+airQuality.aqi+"</td>"
+    aqi.innerHTML = "<th>Air Quality Index</th><td>"+airQuality.aqi+"</td>";
     airQualityTableCellEl.appendChild(aqi);
 
     var humidity = document.createElement("tr");
-    humidity.innerHTML = "<th>Humidity</th><td>"+(airQuality.iaqi.h?.v ?? "N/A")+"</td>"
+    humidity.innerHTML = "<th>Humidity</th><td>"+(airQuality.iaqi.h?.v ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(humidity);
 
     var oz = document.createElement("tr");
-    oz.innerHTML = "<th>Ozone</th><td>"+(airQuality.iaqi.o3?.v ?? "N/A")+"</td>"
+    oz.innerHTML = "<th>Ozone</th><td>"+(airQuality.iaqi.o3?.v ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(oz);
 
     var pressure = document.createElement("tr");
-    pressure.innerHTML = "<th>Atmospheric Pressure</th><td>"+(airQuality.iaqi.p?.v ?? "N/A")+"</td>"
+    pressure.innerHTML = "<th>Atmospheric Pressure</th><td>"+(airQuality.iaqi.p?.v ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(pressure);
 
     var pm25 = document.createElement("tr");
-    pm25.innerHTML = "<th>PM2.5</th><td>"+(airQuality.iaqi.pm25?.v ?? "N/A")+"</td>"
+    pm25.innerHTML = "<th>PM<sub>2.5</sub></th><td>"+(airQuality.iaqi.pm25?.v ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(pm25);
 
+    var pm10 = document.createElement("tr");
+    pm10.innerHTML = "<th>PM<sub>10</sub></th><td>"+(airQuality.iaqi.pm10?.v ?? "N/A")+"</td>";
+    airQualityTableCellEl.appendChild(pm10);
+
     var co = document.createElement("tr");
-    co.innerHTML = "<th>Carbon Monoxide</th><td>"+(airQuality.iaqi.co?.v ?? "N/A")+"</td>"
+    co.innerHTML = "<th>Carbon Monoxide</th><td>"+(airQuality.iaqi.co?.v ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(co);
+
+    var no = document.createElement("tr");
+    no.innerHTML = "<th>Nitrogen Dioxide</th><td>"+(airQuality.iaqi.no2?.v ?? "N/A")+"</td>";
+    airQualityTableCellEl.appendChild(no);
+
+    var so = document.createElement("tr");
+    so.innerHTML = "<th>Sulfur Dioxide</th><td>"+(airQuality.iaqi.so2?.v ?? "N/A")+"</td>";
+    airQualityTableCellEl.appendChild(so);
 }
 
 // When user clicks on station name from search results, it pulls up the air quality results
