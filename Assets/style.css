@@ -2,14 +2,53 @@ body {
   font-family: "Times New Romans", sans-serif;
   background-color: #eff5f8;
   color: #001b44;
+  line-height: 1.8;
+  font-weight: 400;
+  font-size: 1em;
 }
 
-h1 {
+h1.title {
   text-align: center;
+  color: #457812;
 }
 
 p {
 }
 nav img {
   size: 300%;
+}
+li {
+  text-align: center;
+  width: 180%;
+  padding: 15px;
+  margin: 20px;
+  height: 80px;
+  background-color: #c6570b;
+  border: 5px solid #864417;
+}
+
+ul {
+}
+
+div.checklist:hover {
+  background: #ddd;
+}
+
+div.checklist.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+div.checklist.checked::before {
+  content: "";
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
 }
