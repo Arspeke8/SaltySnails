@@ -17,6 +17,7 @@ p {
 nav img {
   size: 300%;
 }
+
 li {
   text-align: center;
   width: 180%;
@@ -60,6 +61,12 @@ div.checklist.checked::before {
   transform: rotate(45deg);
   height: 15px;
   width: 7px;
+=======
+
+.charity {
+  color: blue;
+  font-size: xx-large;
+
 }
 
 .box {
