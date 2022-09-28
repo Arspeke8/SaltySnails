@@ -89,13 +89,13 @@ checklistEl.addEventListener("click", function(event) {
       })
         .then(function (data) {
           for (var i = 0; i < data.length; i++) {
-               var organizationName = document.createElement('h3');
+               var organizationName = document.createElement('h2');
                var organizationState = document.createElement('p');
                var organizationCity = document.createElement('p');
 
                organizationName.textContent = data[i].charityName;
-               organizationState.textContent = data[i].stateOrProvince;
-               organizationCity.textContent = data[i].city;
+               organizationState.textContent = data[i].mailingAddress.stateOrProvince;
+               organizationCity.textContent = data[i]. mailingAddress.city;
 
 
                organizationsContainer.append(organizationName);
