@@ -114,9 +114,13 @@ function retrieveStations(cityName) {
             // Saves url of top result to variable
             var topResultUrl = data.data[0].station.url;
 
-            // Empties search results list and air quality results list
+            // Empties search results list and air quality results list and makes them visible
             airQualitySearchTableCellEl.innerHTML = "";
             airQualityTableCellEl.innerHTML = "";
+            document.querySelector("#air-quality-output").style.display = "block";
+            document.querySelector("#air-quality-search-result").style.display = "block";
+            airQualitySearchEl.classList.add("is-one-quarter");
+            
 
             renderSearchResults(searchResults);
             retrieveAirQuality(topResultUrl);

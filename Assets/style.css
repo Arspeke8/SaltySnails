@@ -70,3 +70,18 @@ div.checklist.checked::before {
 .box {
   margin: 10px;
 }
+
+#air-quality-search-box {
+  margin-bottom: 10px;
+}
+
+#air-quality-search-result {
+  display: block;
+  height: 500px;
+  overflow-y: auto;
+}
+
+#air-quality-search-result,
+#air-quality-output {
+  display: none;
+}
