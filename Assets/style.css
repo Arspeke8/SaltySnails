@@ -12,8 +12,6 @@ h1.title {
   color: #457812;
 }
 
-p {
-}
 nav img {
   size: 300%;
 }
@@ -61,7 +59,7 @@ div.checklist.checked::before {
   transform: rotate(45deg);
   height: 15px;
   width: 7px;
-=======
+}
 
 .charity {
   color: blue;
