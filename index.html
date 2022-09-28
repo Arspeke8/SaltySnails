@@ -139,6 +139,32 @@
         our checklist below where you can log all your pro environment goals!
       </p>
     </section>
+    <!-- Air Quality Section -->
+    <section class="section is-medium">
+      <h1 class="title">Air Quality Dashboard</h1>
+      <!-- Search box -->
+      <form class="box" id="air-quality-search-box">
+        <div class="field">
+          <label class="label">Search by city</label>
+          <div class="control">
+            <input class="input" id="city-name-search" type="text" placeholder="Enter city name here">
+          </div>
+        </div>
+      </form>
+      <!-- Box to show air quality API outputs -->
+      <div class="box" id="air-quality-search-result">Search Results
+        <table class="table">
+          <thead>
+            <th>Station Name</th>
+            <th>Date Updated</th>
+          </thead>
+          <tbody id="air-quality-search-items"></tbody>
+        </table>
+      </div>
+      <div class="box" id="air-quality-output">Air Pollutants
+        
+      </div>
+    </section>
     <!-- Checklist -->
     <div class="card">
       <header class="card-header">
