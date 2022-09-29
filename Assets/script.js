@@ -7,7 +7,6 @@ var airQualitySearchEl = document.querySelector("#air-quality-search-box");
 var airQualitySearchTableCellEl = document.querySelector("#air-quality-search-items");
 var stationNameEl = document.querySelector(".station-name");
 var airQualityTableCellEl = document.querySelector("#air-quality-items");
-var checklistClearEl = document.querySelector("#checklist-clear");
 var signUpModalCloseEl = document.querySelector(".delete");
 var signUpModalEl = document.querySelector(".sign-up");
 var signUpModalSubmitEl = document.querySelector(".sign-up-submit");
@@ -83,19 +82,6 @@ checklistSubmitBtn.addEventListener("click", function(event) {
 
 // Retrieves any data from local storage and loads (if there are any)
 init();
-
-checklistClearEl.addEventListener("click", function() {
-    var checked = document.querySelectorAll("input[type='checkbox']:checked")
-
-    for (i = 0; i < checked.length; i++) {
-        var checkedIndex = checked[i].dataset.index;
-        checklistArray.splice(checkedIndex-i,1);
-        console.log(checklistArray);
-    }
-
-    storeChecklist();
-    renderChecklist();
-});
 
 // Air Quality API
 // When user searches for city name for air quality
