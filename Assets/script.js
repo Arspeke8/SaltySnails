@@ -40,6 +40,23 @@ function renderChecklist() {
     }
 }
 
+checklistEl.addEventListener("click", function(event) {
+  var element = event.target;
+
+  // Checks if element is a checkbox
+    if (element.matches("#individualCheckbox") === true) {
+    // Get its data-index value and remove the checklist element from the list
+    var index = element.getAttribute("data-index");
+    console.log(index);
+    checklistArray.splice(index, 1);
+    console.log(checklistArray);
+
+    // Store updated checklist array in localStorage, re-render the list
+    storeChecklist();
+    renderChecklist();
+  }
+});
+
 // Stores checklist array in local storage
 function storeChecklist() {
     localStorage.setItem("checklist", JSON.stringify(checklistArray));
