@@ -164,7 +164,7 @@
       <h1 class="title">Air Quality Dashboard</h1>
       <div class="columns">
         <!-- Search box -->
-        <form class="box column is-one-quarter" id="air-quality-search-box">
+        <form class="box column" id="air-quality-search-box">
           <div class="field">
             <label class="label"><h4 class="title is-4">Search by City</h4></label>
             <div class="control">
@@ -172,9 +172,9 @@
             </div>
           </div>
         </form>
-        <!-- Box to show air quality API outputs -->
+        <!-- Box to show station search result outputs -->
         <div class="box column" id="air-quality-search-result"><h4 class="title is-4">Search Results</h4>
-          <table class="table">
+          <table class="table is-fullwidth is-hoverable" id="air-quality-search-result-table">
             <thead>
               <th>Station Name</th>
               <th>Date Updated</th>
@@ -187,38 +187,43 @@
         <!-- Box to show air quality search results -->
         <div class="box column" id="air-quality-output"><h4 class="title is-4">Air Pollutants</h4>
           <p class="subtitle is-5 station-name"></p>
-          <table class="table">
+          <table class="table is-fullwidth">
             <tbody id="air-quality-items"></tbody>
           </table>
         </div>
       </div>
     </section>
     <!-- Checklist -->
-    <div class="card">
-      <header class="card-header">
-        <p class="card-header-title">
-          Checklist
-        </p>
-        <button class="card-header-icon" aria-label="more options">
-          <span class="icon">
-            <i class="fas fa-angle-down" aria-hidden="true"></i>
-          </span>
-        </button>
-      </header>
-      <div class="checklist-card">
-        <div class="card-content">
-          <div class="content">
-            Keep track of a list of things you can do to make a positive impact on our environment!
-            <div class="checked"></div>
-            <div class="checklist"></div>
+    <section class="section is-medium">
+      <h1 class="title">Checklist</h1>
+      <div class="columns">
+        <div class="card column">
+          <header class="card-header">
+            <p class="card-header-title">
+              Keep track of a list of things you can do to make a positive impact on our environment!
+            </p>
+            <button class="card-header-icon" aria-label="more options">
+              <span class="icon">
+                <i class="fas fa-angle-down" aria-hidden="true"></i>
+              </span>
+            </button>
+          </header>
+          <div class="checklist-card">
+            <div class="card-content">
+              <div class="content">
+                <div class="checked"></div>
+                <div class="checklist"></div>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <input class="input" id="add-checklist-item" type="text" placeholder="Add checklist item">
+              <button class="button is-success" id="checklist-submit">Submit</button>
+              <button class="button is-danger is-outlined" id="checklist-clear">Clear Checked Items</button>
+            </footer>
           </div>
         </div>
-        <footer class="card-footer">
-          <input class="input" id="add-checklist-item" type="text" placeholder="Add checklist item">
-          <button class="button is-light" id="checklist-submit">Submit</button>
-        </footer>
       </div>
-    </div>
+    </section>
 
     <script src="./Assets/script.js"></script>
   </body>
