@@ -219,7 +219,7 @@ var getbutton = document.getElementById("get-button");
 var organizationsContainer = document.getElementById("organizations");
 
     function getApi() {
-        var requestUrl = 'https://api.data.charitynavigator.org/v2/organizations?app_id=503ffc66&app_key=d75996a1f4f75a04e4644d92b1467e8f&search=environment&pageSize=15';
+        var requestUrl = 'https://api.data.charitynavigator.org/v2/organizations?app_id=592a5b63&app_key=4ef18feab51a23a01a4aa299fb1030b7&categoryID=4&pageSize=15';
 
     fetch(requestUrl)
         .then(function (response) {
