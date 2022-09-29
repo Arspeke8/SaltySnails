@@ -8,6 +8,9 @@ var airQualitySearchTableCellEl = document.querySelector("#air-quality-search-it
 var stationNameEl = document.querySelector(".station-name");
 var airQualityTableCellEl = document.querySelector("#air-quality-items");
 var checklistClearEl = document.querySelector("#checklist-clear");
+var signUpModalCloseEl = document.querySelector(".delete");
+var signUpModalEl = document.querySelector(".sign-up");
+var signUpModalSubmitEl = document.querySelector(".sign-up-submit");
 
 var checklistArray = [];
 
@@ -212,6 +215,33 @@ airQualitySearchTableCellEl.addEventListener("click", function(event) {
         retrieveStations(name);
     }
 });
+
+// To close sign-up for email modal
+signUpModalCloseEl.addEventListener("click", closeModal);
+
+function closeModal() {
+    signUpModalEl.remove("is-active");
+}
+
+// Checks for user input for email modal and closes when successful
+signUpModalSubmitEl.addEventListener("click", function() {
+    var signUpNameEl = document.querySelector(".sign-up-name");
+    var signUpEmailEl = document.querySelector(".sign-up-email");
+
+    if(signUpNameEl.value === "" && signUpEmailEl.value === "") {
+        signUpNameEl.classList.add("is-danger");
+        signUpEmailEl.classList.add("is-danger");
+    } else if (signUpEmailEl.value === "") {
+        signUpEmailEl.classList.add("is-danger");
+    } else if (signUpNameEl.value === "") {
+        signUpNameEl.classList.add("is-danger");
+    } else {
+        signUpEmailEl.value = "";
+        signUpNameEl.value = "";
+
+        closeModal();
+    }
+})
 
 //non profit API 
 
