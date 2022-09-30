@@ -115,7 +115,7 @@ airQualitySearchEl.addEventListener("submit", function(event) {
 
 // Uses user input to search for station and it's air quality using API
 function retrieveStations(cityName) {
-    var airQualityStationSearchURL = "http://api.waqi.info/search/?keyword="+cityName+"&token="+airQualityAPIToken;
+    var airQualityStationSearchURL = "https://api.waqi.info/search/?keyword="+cityName+"&token="+airQualityAPIToken;
 
     fetch(airQualityStationSearchURL)
     .then(function(response) {
@@ -145,7 +145,7 @@ function retrieveStations(cityName) {
 
 // Uses user input to fetch air quality data from API
 function retrieveAirQuality(topResultUrl) {
-    var airQualityAPIUrl = "http://api.waqi.info/feed/"+topResultUrl+"/?token="+airQualityAPIToken;
+    var airQualityAPIUrl = "https://api.waqi.info/feed/"+topResultUrl+"/?token="+airQualityAPIToken;
 
     fetch(airQualityAPIUrl)
     .then(function(response) {
