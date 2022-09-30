@@ -306,7 +306,7 @@ var organizationsContainer = document.getElementById("organizations");
                organizationName.textContent = data[i].charityName;
                organizationName.classList.add("title");
                organizationName.classList.add("is-2");
-               organizationState.textContent = data[i].mailingAddress.stateOrProvince + ',' + data[i].mailingAddress.city;
+               organizationState.textContent = data[i].mailingAddress.stateOrProvince + ', ' + data[i].mailingAddress.city;
                organizationState.classList.add("title");
                organizationState.classList.add("is-3");
                organizationSpacing.textContent = "----------------------------------------------------";
