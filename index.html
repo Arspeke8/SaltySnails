@@ -42,16 +42,22 @@
       <!-- Navbar Links -->
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item"> Link 1 </a>
-
-          <a class="navbar-item"> Link 2 </a>
+          
+          <a class="navbar-item" href="#charityo"> Charity Organizations Near you </a>
+          <a class="navbar-item" href="#hp"> Help Salty </a>
+          <a class="navbar-item" href="#aq"> Air Quality Dashboard </a>
+          <a class="navbar-item" href="#contact"> Environment Checklist </a>
+          <a class="navbar-item" href="#contact"> Contact </a>
+          </div>
+        </div>
         </div>
       </div>
     </nav>
   </header>
 
   <body>
-    <section class="section is-large">
+    <!--Section 1-->
+    <section class="section">
       <h1 class="title is-1">The environment as we know and love.</h1>
       <p class="subtitle is-4">
         The life that we lead and the lifestyle choices that we make heavily
@@ -73,11 +79,11 @@
       </p>
       <!-- non profit organization API -->
     <section>
-    <header class = "card-header">
+    <header id="charityo" class = "card-header">
     </header>
     <div>
     </section>
-    <section class="section is-medium">
+    <section class="section">
       <h1 class = "charity"> Click to view Charity Organizations near you!</h1>
       <div class="buttons">
         <button class="button is-success" id = "get-button">Click Here</button>
@@ -87,7 +93,8 @@
   </section>
       
   </section>
-    <section class="section is-large">
+  <!--Section 2-->
+    <section id="hp" class="section">
       <h1 class="title is-1">How else can you Help Salty and do your part?</h1>
       <p class="subtitle is-3">
         <strong>
@@ -155,7 +162,7 @@
       </p>
     </section>
     <!-- Air Quality API Section -->
-    <section class="section is-medium">
+    <section id="aq" class="section is-medium">
       <h1 class="title">Air Quality Dashboard</h1>
       <div class="columns">
         <!-- Search box -->
@@ -213,17 +220,45 @@
             <footer class="card-footer">
               <input class="input" id="add-checklist-item" type="text" placeholder="Add checklist item">
               <button class="button is-success" id="checklist-submit">Submit</button>
-              <button class="button is-danger is-outlined" id="checklist-clear">Clear Checked Items</button>
             </footer>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Modal for signing up for email updates -->
+    <div class="modal sign-up is-active">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Sign-up for email updates</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+              <input class="input sign-up-name" type="text" placeholder="Enter name here">
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input class="input sign-up-email" type="email" placeholder="Enter email here">
+            </div>
+          </div>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button sign-up-submit is-success">Submit</button>
+        </footer>
+      </div>
+    </div>
+
     <script src="./Assets/script.js"></script>
   </body>
 
-  <footer class="footer">
+  <footer id="contact" class="footer">
     <div class="content has-text-centered">
       <h1>Contact SaltySnail Project Team</h1>
     <div class="bottom">
