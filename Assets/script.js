@@ -10,19 +10,30 @@ var airQualityTableCellEl = document.querySelector("#air-quality-items");
 var signUpModalCloseEl = document.querySelector(".delete");
 var signUpModalEl = document.querySelector(".sign-up");
 var signUpModalSubmitEl = document.querySelector(".sign-up-submit");
-
+var signUpNameEl = document.querySelector(".sign-up-name");
+var signUpEmailEl = document.querySelector(".sign-up-email");
 var checklistArray = [];
+var userArray = [];
 
+// On page load, information from local storage is grabbed and rendered
 function init() {
     // Get stored checklist from local storage
     var storedChecklist = JSON.parse(localStorage.getItem("checklist"));
 
+    // Get stored user info from sign up from local storage
+    var storedUser = JSON.parse(localStorage.getItem("signUpInfo"));
+
     // Updates checklist array if there was a stored checklist from local storage
     if (storedChecklist !== null) {
         checklistArray = storedChecklist;
+        renderChecklist();
     }
 
-    renderChecklist();
+    if (storedUser !== null) {
+        userArray = storedUser;
+
+        renderSignUp();
+    }
 }
 
 // Renders checklist items as <li> elements
@@ -39,6 +50,7 @@ function renderChecklist() {
     }
 }
 
+// When user checks off a checklist item
 checklistEl.addEventListener("click", function(event) {
   var element = event.target;
 
@@ -131,6 +143,7 @@ function retrieveStations(cityName) {
     })
 }
 
+// Uses user input to fetch air quality data from API
 function retrieveAirQuality(topResultUrl) {
     var airQualityAPIUrl = "http://api.waqi.info/feed/"+topResultUrl+"/?token="+airQualityAPIToken;
 
@@ -153,6 +166,7 @@ function retrieveAirQuality(topResultUrl) {
     })
 }
 
+// Renders search results of station names
 function renderSearchResults(searchResults) {
     for(var i = 0; i < searchResults.length; i++) {
         var airQualitySearchCellEl = document.createElement("tr");
@@ -162,43 +176,51 @@ function renderSearchResults(searchResults) {
     }
 }
 
+// Renders air quality information from API
 function renderAirQuality(airQuality) {
-    console.log(airQuality);
-
     stationNameEl.textContent = "Station Name: " + airQuality.name + " on " + airQuality.date.s;
 
+    // Air quality index
     var aqi = document.createElement("tr");
     aqi.innerHTML = "<th>Air Quality Index</th><td>"+(airQuality?.aqi ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(aqi);
 
+    // Humidity
     var humidity = document.createElement("tr");
     humidity.innerHTML = "<th>Humidity</th><td>"+(airQuality.iaqi.h?.v ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(humidity);
 
+    // Ozone
     var oz = document.createElement("tr");
     oz.innerHTML = "<th>Ozone</th><td>"+(airQuality.iaqi.o3?.v ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(oz);
 
+    // Air pressure
     var pressure = document.createElement("tr");
     pressure.innerHTML = "<th>Atmospheric Pressure</th><td>"+(airQuality.iaqi.p?.v ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(pressure);
 
+    // Concentration of PM2.5
     var pm25 = document.createElement("tr");
     pm25.innerHTML = "<th>PM<sub>2.5</sub></th><td>"+(airQuality.iaqi.pm25?.v ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(pm25);
 
+    // Concentration of PM10
     var pm10 = document.createElement("tr");
     pm10.innerHTML = "<th>PM<sub>10</sub></th><td>"+(airQuality.iaqi.pm10?.v ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(pm10);
 
+    // Concentration of carbon monoxide
     var co = document.createElement("tr");
     co.innerHTML = "<th>Carbon Monoxide</th><td>"+(airQuality.iaqi.co?.v ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(co);
 
+    // Concentration of nitrogen dioxide
     var no = document.createElement("tr");
     no.innerHTML = "<th>Nitrogen Dioxide</th><td>"+(airQuality.iaqi.no2?.v ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(no);
 
+    // Concentration of sulfur dioxide
     var so = document.createElement("tr");
     so.innerHTML = "<th>Sulfur Dioxide</th><td>"+(airQuality.iaqi.so2?.v ?? "N/A")+"</td>";
     airQualityTableCellEl.appendChild(so);
@@ -207,8 +229,6 @@ function renderAirQuality(airQuality) {
 // When user clicks on station name from search results, it pulls up the air quality results
 airQualitySearchTableCellEl.addEventListener("click", function(event) {
     var element = event.target;
-
-    console.log(element);
 
     // Checks if element is a station name from search history
     if(element.matches("#search-result-station-name")) {
@@ -228,9 +248,8 @@ function closeModal() {
 
 // Checks for user input for email modal and closes when successful
 signUpModalSubmitEl.addEventListener("click", function() {
-    var signUpNameEl = document.querySelector(".sign-up-name");
-    var signUpEmailEl = document.querySelector(".sign-up-email");
 
+    // checks for invalid inputs first, then stores correct inputs in local storage
     if(signUpNameEl.value === "" && signUpEmailEl.value === "") {
         signUpNameEl.classList.add("is-danger");
         signUpEmailEl.classList.add("is-danger");
@@ -239,12 +258,32 @@ signUpModalSubmitEl.addEventListener("click", function() {
     } else if (signUpNameEl.value === "") {
         signUpNameEl.classList.add("is-danger");
     } else {
-        signUpEmailEl.value = "";
-        signUpNameEl.value = "";
+        var email = signUpEmailEl.value;
+        var name = signUpNameEl.value;
 
+        storeSignUp(name, email);
         closeModal();
     }
 })
+
+// Stores user input from sign up modal to  local storage
+function storeSignUp(name, email) {
+    var user = {
+        name,
+        email
+    }
+    localStorage.setItem("signUpInfo", JSON.stringify(user));
+}
+
+// Renders any user input from local storage
+function renderSignUp() {
+    signUpNameEl.value = userArray.name;
+    signUpEmailEl.value = userArray.email;
+
+    var message = document.createElement("p");
+    message.textContent = "You already signed up for email updates with this name and email!";
+    document.querySelector(".modal-card-body").appendChild(message);
+}
 
 //non profit API 
 
