@@ -300,17 +300,21 @@ var organizationsContainer = document.getElementById("organizations");
         .then(function (data) {
           for (var i = 0; i < data.length; i++) {
                var organizationName = document.createElement('h2');
-               var organizationState = document.createElement('p');
-               var organizationCity = document.createElement('p');
+               var organizationState = document.createElement('h2');
+               var organizationSpacing = document.createElement('p');
 
                organizationName.textContent = data[i].charityName;
-               organizationState.textContent = data[i].mailingAddress.stateOrProvince;
-               organizationCity.textContent = data[i]. mailingAddress.city;
+               organizationName.classList.add("title");
+               organizationName.classList.add("is-2");
+               organizationState.textContent = data[i].mailingAddress.stateOrProvince + ',' + data[i].mailingAddress.city;
+               organizationState.classList.add("title");
+               organizationState.classList.add("is-3");
+               organizationSpacing.textContent = "----------------------------------------------------";
 
 
-               organizationsContainer.append(organizationName);
-               organizationsContainer.append(organizationState);
-               organizationsContainer.append(organizationCity);
+               organizationsContainer.appendChild(organizationName);
+               organizationsContainer.appendChild(organizationState);
+               organizationsContainer.appendChild(organizationSpacing);
 
             }
       })
