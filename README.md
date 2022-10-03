@@ -24,5 +24,5 @@ Screenshot:
 
 Contributors: Nick Burns, Ryan Dong, Frances Cortuna, Jorge Fuster
 
-Charity's Navigator API link: https://www.charitynavigator.org/index.cfm?bay=content.view&cpid=1397
+Charity's Navigator API link: https://www.charitynavigator.org/index.cfm?bay=content.view&cpid=1397  
 Air Quality API link: https://aqicn.org/api/ 

@@ -320,3 +320,13 @@ var organizationsContainer = document.getElementById("organizations");
       })
     }
     getbutton.addEventListener('click', getApi);
+
+// To make navbar responsive
+var navbarBurgerEl = document.querySelector(".navbar-burger");
+var navbarMenuEl = document.querySelector(".navbar-menu");
+
+// Toggles "is-active" class on click for smaller screens
+navbarBurgerEl.addEventListener("click", function() {
+    navbarBurgerEl.classList.toggle("is-active");
+    navbarMenuEl.classList.toggle("is-active");
+})
